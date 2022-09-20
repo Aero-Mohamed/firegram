@@ -5,19 +5,19 @@ const useStorageUploadFromLink = (link) => {
   const [error, setError] = useState(null);
 
   const checkURL = (url) => {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) !== null);
 }
 
   useEffect(() => {
     
     if(checkURL(link)){
       const collectionRef = projectFirestore.collection('images');
-      const fileName = link.replace(/^.*\/|\.[^.]*$/g, '');
+      // const fileName = link.replace(/^.*\/|\.[^.]*$/g, '');
       const createdAt = timestamp();
       collectionRef.add({ url: link, createdAt });
       
     }else{
-      if(link != ''){
+      if(link !== ''){
         setError('Please Enter valid image link');
       }
     }

@@ -12,7 +12,7 @@ const ProgressBar = ({ file, setFile , link, setLink}) => {
     if (url) {
       setFile(null);
     }
-    if (error == ''){
+    if (error === ''){
       setLink(null);
     }
   }, [url, setFile, error]);
