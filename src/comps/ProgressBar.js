@@ -15,7 +15,7 @@ const ProgressBar = ({ file, setFile , link, setLink}) => {
     if (error === ''){
       setLink(null);
     }
-  }, [url, setFile, error]);
+  }, [url, setFile, error, setLink]);
 
   return (
     <motion.div className="progress-bar"
