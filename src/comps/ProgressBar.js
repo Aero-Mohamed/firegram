@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react';
 import useStorage from '../hooks/useStorage';
+import useStorageUploadFromLink from '../hooks/useStorageUploadFromLink';
 import { motion } from 'framer-motion';
 
-const ProgressBar = ({ file, setFile }) => {
-  const { progress, url } = useStorage(file);
-
+const ProgressBar = ({ file, setFile , link, setLink}) => {
+  
+  const { progress1, url } = useStorage(file);
+  const { error } = useStorageUploadFromLink(link);  
+  
   useEffect(() => {
     if (url) {
       setFile(null);
     }
-  }, [url, setFile]);
+    if (error == ''){
+      setLink(null);
+    }
+  }, [url, setFile, error]);
 
   return (
     <motion.div className="progress-bar"
       initial={{ width: 0 }}
-      animate={{ width: progress + '%' }}
+      animate={{ width: progress1 + '%' }}
     ></motion.div>
   );
 } 
