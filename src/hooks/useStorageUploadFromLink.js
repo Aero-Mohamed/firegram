@@ -14,7 +14,7 @@ const useStorageUploadFromLink = (link) => {
       const collectionRef = projectFirestore.collection('images');
       const fileName = link.replace(/^.*\/|\.[^.]*$/g, '');
       const createdAt = timestamp();
-      collectionRef.add({ url: clink, createdAt });
+      collectionRef.add({ url: link, createdAt });
       
     }else{
       if(link != ''){
